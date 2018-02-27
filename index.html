@@ -26,17 +26,17 @@
         <th> Percentage </th>
     </tr>
     <tr>
-        <th> <button onclick="clickButton(varBlasto,'blasto_counter_id')">Blasto</button> </th>
+        <th> <button onclick="clickButton('blasto')">Blasto</button> </th>
         <th id="blasto_counter_id">0</th>
         <th id="blasto_percentage_id">0%</th>
     </tr>
     <tr>
-        <th> <button onclick="clickButton(varMieNeu,'mieneu_counter_id')">Mie.Neu</button> </th>
+        <th> <button onclick="clickButton('mieneu')">Mie.Neu</button> </th>
         <th id="mieneu_counter_id">0</th>
         <th id="mieneu_percentage_id">0%</th>
     </tr>
     <tr>
-        <th> <button onclick="clickButton(varPromie,'promie_counter_id')">Promie</button> </th>
+        <th> <button onclick="clickButton('promie')">Promie</button> </th>
         <th id="promie_counter_id">0</th>
         <th id="promie_percentage_id">0%</th>
     </tr>
@@ -58,50 +58,35 @@ function Button(counter){
     this.incrementCounter = function(){ this.counter += 1; };
 }
 
-var varBlasto = new Button(0);
-var varPromie = new Button(0);
-var varMieNeu = new Button(0);
+var cellList = ["blasto", "mieneu", "promie"];
+var variablesDict = {};
+for( i = 0; i < cellList.length; ++i ){
+    variablesDict[cellList[i]] = new Button(0);
+}
 var totalCount = 0;
 
-
-function clickButton( variable, variable_id ) {
-    variable.incrementCounter();
-    document.getElementById(variable_id).innerHTML = variable.counter;
+function clickButton( cell_name ) {
+    variablesDict[cell_name].incrementCounter();
+    document.getElementById( cell_name + "_counter_id" ).innerHTML = variablesDict[cell_name].counter;
     totalCount += 1;
     document.getElementById("total_id").innerHTML = totalCount;
-    updatePercentage();
-}
-
-function updatePercentage() {
     if( totalCount > 0 ) {
-        var blasto_percentage = varBlasto.counter/totalCount;
-        var mieneu_percentage = varMieNeu.counter/totalCount;
-        var promie_percentage = varPromie.counter/totalCount;
-        document.getElementById("blasto_percentage_id").innerHTML =
-            Math.floor(blasto_percentage*1000)/10 + '%';
-        document.getElementById("mieneu_percentage_id").innerHTML =
-            Math.floor(mieneu_percentage*1000)/10 + '%';
-        document.getElementById("promie_percentage_id").innerHTML =
-            Math.floor(promie_percentage*1000)/10 + '%';
+        for( i = 0; i < cellList.length; ++i ){
+            var cell_percentage = variablesDict[cellList[i]].counter/totalCount;
+            document.getElementById( cellList[i] + "_percentage_id").innerHTML =
+                Math.floor(cell_percentage*1000)/10 + "%";
+        }
     }
 }
 
-
 function clickClear() {
-    varBlasto.counter = 0;
-    varMieNeu.counter = 0;
-    varPromie.counter = 0;
+    for( i = 0; i < cellList.length; ++i ){
+        var cell_name = cellList[i];
+        variablesDict[cell_name].counter = 0;
+        document.getElementById(cell_name + "_counter_id").innerHTML = "0";
+        document.getElementById(cell_name + "_percentage_id").innerHTML = "0%";
+    }
     totalCount = 0;
-
-    document.getElementById("blasto_counter_id").innerHTML = varBlasto.counter;
-    document.getElementById("blasto_percentage_id").innerHTML = '0%';
-
-    document.getElementById("mieneu_counter_id").innerHTML = varMieNeu.counter;
-    document.getElementById("mieneu_percentage_id").innerHTML = '0%';
-
-    document.getElementById("promie_counter_id").innerHTML = varPromie.counter;
-    document.getElementById("promie_percentage_id").innerHTML = '0%';
-
     document.getElementById("total_id").innerHTML = totalCount;
 }
 </script>
