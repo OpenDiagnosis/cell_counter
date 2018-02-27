@@ -36,10 +36,67 @@
         <th id="mieneu_percentage_id">0%</th>
     </tr>
     <tr>
+        <th> <button onclick="clickButton('mieeos')">Mie.Eos</button> </th>
+        <th id="mieeos_counter_id">0</th>
+        <th id="mieeos_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('miebas')">Mie.Bas</button> </th>
+        <th id="miebas_counter_id">0</th>
+        <th id="miebas_percentage_id">0%</th>
+    </tr>
+    <tr>
         <th> <button onclick="clickButton('promie')">Promie</button> </th>
         <th id="promie_counter_id">0</th>
         <th id="promie_percentage_id">0%</th>
     </tr>
+    <tr>
+        <th> <button onclick="clickButton('metaneu')">Meta.Neu</button> </th>
+        <th id="metaneu_counter_id">0</th>
+        <th id="metaneu_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('metaeos')">Meta.Eos</button> </th>
+        <th id="metaeos_counter_id">0</th>
+        <th id="metaeos_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('metabas')">Meta.Bas</button> </th>
+        <th id="metabas_counter_id">0</th>
+        <th id="metabas_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('bastneu')">Bast.Neu</button> </th>
+        <th id="bastneu_counter_id">0</th>
+        <th id="bastneu_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('basteos')">Bast.Eos</button> </th>
+        <th id="basteos_counter_id">0</th>
+        <th id="basteos_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('bastbas')">Bast.Bas</button> </th>
+        <th id="bastbas_counter_id">0</th>
+        <th id="bastbas_percentage_id">0%</th>
+    </tr>
+
+    <tr>
+        <th> <button onclick="clickButton('neuseg')">Neu.Seg</button> </th>
+        <th id="neuseg_counter_id">0</th>
+        <th id="neuseg_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('eosseg')">Eos.Seg</button> </th>
+        <th id="eosseg_counter_id">0</th>
+        <th id="eosseg_percentage_id">0%</th>
+    </tr>
+    <tr>
+        <th> <button onclick="clickButton('basseg')">Bas.Seg</button> </th>
+        <th id="basseg_counter_id">0</th>
+        <th id="basseg_percentage_id">0%</th>
+    </tr>
+
     <tr>
         <th> Total </th>
         <th id="total_id">0</th>
@@ -58,7 +115,9 @@ function Button(counter){
     this.incrementCounter = function(){ this.counter += 1; };
 }
 
-var cellList = ["blasto", "mieneu", "promie"];
+var cellList = ["blasto", "mieneu", "mieeos", "miebas", "promie", "metaneu",
+        "metaeos", "metabas","bastneu", "basteos", "bastbas", "neuseg",
+        "eosseg", "basseg"];
 var variablesDict = {};
 for( i = 0; i < cellList.length; ++i ){
     variablesDict[cellList[i]] = new Button(0);
