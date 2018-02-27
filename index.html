@@ -6,6 +6,15 @@
     <meta name="description" content="Blood cell counter">
     <meta name="keywords" content="blood cell counter">
     <meta name="author" content="Thomio Watanabe">
+    <style>
+        table {
+            width: 100%;
+        }
+        td, th {
+            text-align: middle;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,12 +42,13 @@
     <tr>
         <th> Total </th>
         <th id="total_id">0</th>
-<!--        <th></th>-->
     </tr>
+    <tr>
+        <th> <button onclick="clickClear()">Clear</button> </th>
+    </tr>
+
 </table>
 
-<br>
-<button onclick="clickClear()">Clear</button>
 
 
 <script>
