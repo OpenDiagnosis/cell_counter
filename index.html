@@ -21,80 +21,40 @@
 <body>
 <table>
     <tr>
-        <th> Cell </th>
-        <th> Counts </th>
-        <th> Percentage </th>
-    </tr>
-    <tr>
         <th> <button onclick="clickButton('blasto')">Blasto</button> </th>
-        <th id="blasto_counter_id">0</th>
-        <th id="blasto_percentage_id">0%</th>
+        <th id="blasto_percentage_id" width="50px">0%</th>
+        <th> <button onclick="clickButton('promie')">Promie</button> </th>
+        <th id="promie_percentage_id" width="50px">0%</th>
     </tr>
     <tr>
         <th> <button onclick="clickButton('mieneu')">Mie.Neu</button> </th>
-        <th id="mieneu_counter_id">0</th>
-        <th id="mieneu_percentage_id">0%</th>
+        <th id="mieneu_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('metaneu')">Meta.Neu</button> </th>
+        <th id="metaneu_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('bastneu')">Bast.Neu</button> </th>
+        <th id="bastneu_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('neuseg')">Neu.Seg</button> </th>
+        <th id="neuseg_percentage_id" width="70px">0%</th>
     </tr>
     <tr>
         <th> <button onclick="clickButton('mieeos')">Mie.Eos</button> </th>
-        <th id="mieeos_counter_id">0</th>
-        <th id="mieeos_percentage_id">0%</th>
+        <th id="mieeos_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('metaeos')">Meta.Eos</button> </th>
+        <th id="metaeos_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('basteos')">Bast.Eos</button> </th>
+        <th id="basteos_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('eosseg')">Eos.Seg</button> </th>
+        <th id="eosseg_percentage_id" width="70px">0%</th>
     </tr>
     <tr>
         <th> <button onclick="clickButton('miebas')">Mie.Bas</button> </th>
-        <th id="miebas_counter_id">0</th>
-        <th id="miebas_percentage_id">0%</th>
-    </tr>
-    <tr>
-        <th> <button onclick="clickButton('promie')">Promie</button> </th>
-        <th id="promie_counter_id">0</th>
-        <th id="promie_percentage_id">0%</th>
-    </tr>
-    <tr>
-        <th> <button onclick="clickButton('metaneu')">Meta.Neu</button> </th>
-        <th id="metaneu_counter_id">0</th>
-        <th id="metaneu_percentage_id">0%</th>
-    </tr>
-    <tr>
-        <th> <button onclick="clickButton('metaeos')">Meta.Eos</button> </th>
-        <th id="metaeos_counter_id">0</th>
-        <th id="metaeos_percentage_id">0%</th>
-    </tr>
-    <tr>
+        <th id="miebas_percentage_id" width="70px">0%</th>
         <th> <button onclick="clickButton('metabas')">Meta.Bas</button> </th>
-        <th id="metabas_counter_id">0</th>
-        <th id="metabas_percentage_id">0%</th>
-    </tr>
-    <tr>
-        <th> <button onclick="clickButton('bastneu')">Bast.Neu</button> </th>
-        <th id="bastneu_counter_id">0</th>
-        <th id="bastneu_percentage_id">0%</th>
-    </tr>
-    <tr>
-        <th> <button onclick="clickButton('basteos')">Bast.Eos</button> </th>
-        <th id="basteos_counter_id">0</th>
-        <th id="basteos_percentage_id">0%</th>
-    </tr>
-    <tr>
+        <th id="metabas_percentage_id" width="70px">0%</th>
         <th> <button onclick="clickButton('bastbas')">Bast.Bas</button> </th>
-        <th id="bastbas_counter_id">0</th>
-        <th id="bastbas_percentage_id">0%</th>
-    </tr>
-
-    <tr>
-        <th> <button onclick="clickButton('neuseg')">Neu.Seg</button> </th>
-        <th id="neuseg_counter_id">0</th>
-        <th id="neuseg_percentage_id">0%</th>
-    </tr>
-    <tr>
-        <th> <button onclick="clickButton('eosseg')">Eos.Seg</button> </th>
-        <th id="eosseg_counter_id">0</th>
-        <th id="eosseg_percentage_id">0%</th>
-    </tr>
-    <tr>
+        <th id="bastbas_percentage_id" width="70px">0%</th>
         <th> <button onclick="clickButton('basseg')">Bas.Seg</button> </th>
-        <th id="basseg_counter_id">0</th>
-        <th id="basseg_percentage_id">0%</th>
+        <th id="basseg_percentage_id" width="70px">0%</th>
     </tr>
 
     <tr>
@@ -126,14 +86,13 @@ var totalCount = 0;
 
 function clickButton( cell_name ) {
     variablesDict[cell_name].incrementCounter();
-    document.getElementById( cell_name + "_counter_id" ).innerHTML = variablesDict[cell_name].counter;
     totalCount += 1;
     document.getElementById("total_id").innerHTML = totalCount;
     if( totalCount > 0 ) {
         for( i = 0; i < cellList.length; ++i ){
             var cell_percentage = variablesDict[cellList[i]].counter/totalCount;
             document.getElementById( cellList[i] + "_percentage_id").innerHTML =
-                Math.floor(cell_percentage*1000)/10 + "%";
+                Math.floor(cell_percentage*10000)/100 + "%";
         }
     }
 }
@@ -142,7 +101,6 @@ function clickClear() {
     for( i = 0; i < cellList.length; ++i ){
         var cell_name = cellList[i];
         variablesDict[cell_name].counter = 0;
-        document.getElementById(cell_name + "_counter_id").innerHTML = "0";
         document.getElementById(cell_name + "_percentage_id").innerHTML = "0%";
     }
     totalCount = 0;
