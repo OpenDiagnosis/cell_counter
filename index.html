@@ -22,9 +22,9 @@
 <table>
     <tr>
         <th> <button onclick="clickButton('blasto')">Blasto</button> </th>
-        <th id="blasto_percentage_id" width="50px">0%</th>
+        <th id="blasto_percentage_id" width="70px">0%</th>
         <th> <button onclick="clickButton('promie')">Promie</button> </th>
-        <th id="promie_percentage_id" width="50px">0%</th>
+        <th id="promie_percentage_id" width="70px">0%</th>
     </tr>
     <tr>
         <th> <button onclick="clickButton('mieneu')">Mie.Neu</button> </th>
@@ -37,26 +37,11 @@
         <th id="neuseg_percentage_id" width="70px">0%</th>
     </tr>
     <tr>
-        <th> <button onclick="clickButton('mieeos')">Mie.Eos</button> </th>
-        <th id="mieeos_percentage_id" width="70px">0%</th>
-        <th> <button onclick="clickButton('metaeos')">Meta.Eos</button> </th>
-        <th id="metaeos_percentage_id" width="70px">0%</th>
-        <th> <button onclick="clickButton('basteos')">Bast.Eos</button> </th>
-        <th id="basteos_percentage_id" width="70px">0%</th>
-        <th> <button onclick="clickButton('eosseg')">Eos.Seg</button> </th>
-        <th id="eosseg_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('eosinofilo')">Eosinófilo</button> </th>
+        <th id="eosinofilo_percentage_id" width="70px">0%</th>
+        <th> <button onclick="clickButton('basofilo')">Basófilo</button> </th>
+        <th id="basofilo_percentage_id" width="70px">0%</th>
     </tr>
-    <tr>
-        <th> <button onclick="clickButton('miebas')">Mie.Bas</button> </th>
-        <th id="miebas_percentage_id" width="70px">0%</th>
-        <th> <button onclick="clickButton('metabas')">Meta.Bas</button> </th>
-        <th id="metabas_percentage_id" width="70px">0%</th>
-        <th> <button onclick="clickButton('bastbas')">Bast.Bas</button> </th>
-        <th id="bastbas_percentage_id" width="70px">0%</th>
-        <th> <button onclick="clickButton('basseg')">Bas.Seg</button> </th>
-        <th id="basseg_percentage_id" width="70px">0%</th>
-    </tr>
-
     <tr>
         <th> Total </th>
         <th id="total_id">0</th>
@@ -75,9 +60,9 @@ function Button(counter){
     this.incrementCounter = function(){ this.counter += 1; };
 }
 
-var cellList = ["blasto", "mieneu", "mieeos", "miebas", "promie", "metaneu",
-        "metaeos", "metabas","bastneu", "basteos", "bastbas", "neuseg",
-        "eosseg", "basseg"];
+var cellList = ["blasto", "promie", "mieneu", "metaneu", "bastneu", "neuseg",
+        "eosinofilo", "basofilo"];
+
 var variablesDict = {};
 for( i = 0; i < cellList.length; ++i ){
     variablesDict[cellList[i]] = new Button(0);
